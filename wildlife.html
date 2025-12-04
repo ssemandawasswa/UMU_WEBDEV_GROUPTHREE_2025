@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wildlife Gallery - Visit Uganda</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo" aria-label="Visit Uganda home">
+        <span class="logo-mark" aria-hidden="true">🦒</span>
+        <span class="logo-text">Visit Uganda</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="wildlife.html" class="active">Wildlife</a>
+        <a href="tours.html">Tours</a>
+        <a href="regions.html">Regions</a>
+        <a href="tips.html">Tips</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="wildlife" class="container" aria-label="Wildlife gallery">
+    <section class="section-header" aria-label="Gallery intro">
+      <h1>Wildlife Gallery</h1>
+      <p class="lead">A visual journey through Uganda's iconic wildlife and landscapes. Tap or click images to view details.</p>
+    </section>
+
+    <section class="gallery-grid" id="gallery" aria-label="Gallery grid">
+      <figure class="gallery-item" tabindex="0" data-title="Gorilla Trekking" data-desc="Bwindi & Mgahinga" aria-label="Gorilla trekking in forest">
+        <img src="assets/images/158.png" alt="Gorilla in forest" loading="lazy" />
+        <figcaption>Gorilla Trekking</figcaption>
+      </figure>
+      <figure class="gallery-item" tabindex="0" data-title="Giraffe in Kibale" data-desc="Forest Habitat" aria-label="Giraffe in forest">
+        <img src="assets/images/159.png" alt="Giraffe in forest" loading="lazy" />
+        <figcaption>Giraffe Encounter</figcaption>
+      </figure>
+      <figure class="gallery-item" tabindex="0" data-title="Tiger herd" data-desc="Savannah" aria-label="Tigers">
+        <img src="assets/images/160.png" alt="Tigers in savannah" loading="lazy" />
+        <figcaption>Tiger Sightings</figcaption>
+      </figure>
+      <figure class="gallery-item" tabindex="0" data-title="Uganda Kobs & Antelopes" data-desc="Antelopes" aria-label="uganda Kobs">
+        <img src="assets/images/161.png" alt="Bird on water" loading="lazy" />
+        <figcaption>Uganda Kobs & Antelopes</figcaption>
+      </figure>
+    </section>
+
+    <!-- Lightbox modal (hidden by default) -->
+    <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+      <button class="lightbox-close" aria-label="Close">
+        <i class="fa fa-times"></i>
+      </button>
+      <div class="lightbox-content" id="lightbox-content"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 Visit Uganda. All rights reserved to GROUP THREE.</p>
+      <pre>
+        SSEMANDA WASSWA: 2025-B072-32858
+        NABBANGA IRENE: 2025-B221-30379
+        SSUUNA IVAN VANANSIO: 2025-B221-32002
+        NANNYOMBI MARIA ASSUMPTA:2025-B201-31945
+        KATUSHABE ANNAH: 2025-B201-30635
+        MUKIIBI MICHEAL: 2025-B072-34206
+      </pre>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

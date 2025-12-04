@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Tips - Visit Uganda</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+    <style>
+    #map {
+      height: 500px;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo" aria-label="Visit Uganda home">
+        <span class="logo-mark" aria-hidden="true">🦒</span>
+        <span class="logo-text">Visit Uganda</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="wildlife.html">Wildlife</a>
+        <a href="tours.html">Tours</a>
+        <a href="regions.html">Regions</a>
+        <a href="tips.html" class="active">Tips</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="tips" class="container" aria-label="Travel tips">
+    <section class="section-header" aria-label="Travel tips intro">
+      <h1>Travel Tips for Uganda Safaris</h1>
+      <p class="lead">Practical advice to help you plan a smooth, respectful, and unforgettable wildlife journey.</p>
+    </section>
+
+    <section aria-label="Top tips" style="padding: .5rem 0 1.5rem;">
+      <ul class="tips-list" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem;">
+        <li><strong>Best Time to Visit:</strong> June–August and December–February for gorilla trekking; consider the wet season for lush scenery but muddy trails.</li>
+        <li><strong>Permits & Planning:</strong> Gorilla permits are limited; book early through an accredited operator.</li>
+        <li><strong>Health & Safety:</strong> Vaccinations (as advised), anti-malarial prophylaxis, and travel insurance with medical cover.</li>
+        <li><strong>Respect & Etiquette:</strong> Keep a safe distance from wildlife; follow guide instructions and local cultural norms.</li>
+        <li><strong>Packing:</strong> Lightweight clothing, good walking shoes, rain gear, sun protection, and a compact first-aid kit.</li>
+      </ul>
+    </section>
+
+    <section aria-label="Packing checklist" style="padding-top: .5rem;">
+      <h2>What to Pack</h2>
+      <ul class="tips-list" style="list-style: square; padding-left: 1.25rem;">
+        <li>Camera with extra memory and batteries; binoculars for birding.</li>
+        <li>Water bottle, snacks, and a small day pack for treks.</li>
+        <li>Insect repellent, sunglasses, and a hat for sun protection.</li>
+        <li>Lightweight layers for varying elevations and temperatures.</li>
+      </ul>
+    </section>
+
+    <!-- Map placeholder (embed a static map or image later) -->
+    <section aria-label="Region map" style="padding-top: .5rem;">
+<h2>Interactive Uganda Regions Map</h2>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// ------------ Initialize Map ----------------
+var map = L.map('map').setView([1.3733, 32.2903], 7);
+
+// ------------ Base Map Layer ----------------
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18
+}).addTo(map);
+
+// ------------ Uganda Regions (GeoJSON) ----------------
+var ugandaRegions = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "name": "Central Region" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[31.0,0.0],[33.0,0.0],[33.0,1.5],[31.0,1.5],[31.0,0.0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Western Region" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[29.5,-0.5],[31.0,-0.5],[31.0,2.0],[29.5,2.0],[29.5,-0.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Eastern Region" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[33.0,-0.3],[35.0,-0.3],[35.0,2.0],[33.0,2.0],[33.0,-0.3]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "name": "Northern Region" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[30.0,2.0],[34.0,2.0],[34.0,4.0],[30.0,4.0],[30.0,2.0]]]
+      }
+    }
+  ]
+};
+
+// ------------ Region Style ----------------
+function regionStyle(feature) {
+  return {
+    fillColor: "#2e8b57",
+    weight: 2,
+    opacity: 1,
+    color: "#ffffff",
+    fillOpacity: 0.6
+  };
+}
+
+// ------------ Hover + Click Interaction ----------------
+function onEachRegion(feature, layer) {
+  layer.bindPopup("<b>" + feature.properties.name + "</b>");
+
+  layer.on({
+    mouseover: function (e) {
+      e.target.setStyle({ fillColor: "#1b5e20" });
+    },
+    mouseout: function (e) {
+      geojson.resetStyle(e.target);
+    },
+    click: function (e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  });
+}
+
+// ------------ Add Regions to Map ----------------
+var geojson = L.geoJSON(ugandaRegions, {
+  style: regionStyle,
+  onEachFeature: onEachRegion
+}).addTo(map);
+
+</script>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 Visit Uganda. All rights reserved to GROUP THREE.</p>
+      <pre>
+        SSEMANDA WASSWA: 2025-B072-32858
+        NABBANGA IRENE: 2025-B221-30379
+        SSUUNA IVAN VANANSIO: 2025-B221-32002
+        NANNYOMBI MARIA ASSUMPTA:2025-B201-31945
+        KATUSHABE ANNAH: 2025-B201-30635
+        MUKIIBI MICHEAL: 2025-B072-34206
+      </pre>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact - Visit Uganda</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo" aria-label="Visit Uganda home">
+        <span class="logo-mark" aria-hidden="true">🦒</span>
+        <span class="logo-text">Visit Uganda</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="wildlife.html">Wildlife</a>
+        <a href="tours.html">Tours</a>
+        <a href="regions.html">Regions</a>
+        <a href="tips.html">Tips</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fa fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="container" id="contact" aria-label="Contact">
+    <section class="section-header">
+      <h1>Plan Your Visit</h1>
+      <p class="lead">Tell us about your interests and travel dates. We’ll tailor an unforgettable Uganda wildlife journey.</p>
+    </section>
+
+    <form id="contactForm" class="contact-form" novalidate>
+      <div class="field-row">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" required placeholder="Your full name" />
+        <span class="error" id="nameError" aria-live="polite"></span>
+      </div>
+
+      <div class="field-row">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="you@example.com" />
+        <span class="error" id="emailError" aria-live="polite"></span>
+      </div>
+
+      <div class="field-row" style="grid-column: span 2;">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell us about your interests, dates, and group size"></textarea>
+        <span class="error" id="messageError" aria-live="polite"></span>
+      </div>
+
+      <div class="field-row" style="grid-column: span 2;">
+        <label><input type="checkbox" id="consent" required /> I agree to be contacted about my inquiry.</label>
+        <span class="error" id="consentError" aria-live="polite"></span>
+      </div>
+
+      <button class="btn btn-primary" type="submit" aria-label="Send inquiry">Send Inquiry</button>
+    </form>
+    <img src="instagram.png">
+  </main>
+
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container footer-content">
+      <p>&copy; 2025 Visit Uganda. All rights reserved to GROUP THREE.</p>
+      <pre>
+        SSEMANDA WASSWA: 2025-B072-32858
+        NABANGA IRENE: 2025-B221-30379
+        SSUUNA IVAN VANANSIO: 2025-B221-32002
+        NANNYOMBI MARIA ASSUMPTA:2025-B201-31945
+        KATUSHABE ANNAH: 2025-B201-30635
+        MUKIIBI MICHEAL: 2025-B072-34206
+      </pre>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
